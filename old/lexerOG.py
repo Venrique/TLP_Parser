@@ -5,7 +5,7 @@ import re
  
 #Expresiones regulares
 identificadores = {
-    'IDENTIFICADOR': r'^([a-zA-Z_][a-zA-Z\\d_$]*)$'
+    'IDENTIFICADOR': r'[_a-zA-Z][_a-zA-Z0-9]*'
 }
 claves_identificador = identificadores.keys()
 
@@ -39,14 +39,14 @@ operadores_comp = {
     '++': 'INCREMENTO',
     '--': 'DECREMENTO',
     '==': 'COMPARAR_IGUAL',
-    '===': 'COMPARAR_IGUAL_TIPADO',
     '!=': 'COMPARAR_DIF',
     '&&': 'AND_LOGICO_CONDICIONAL',
     '||': 'OR_LOGICO_CONDICIONAL',
     '+=': 'ASIGNAR_SUMA',
     '-=': 'ASIGNAR_RESTA',
     '*=': 'ASIGNAR_MULT',
-    '/=': 'ASIGNAR_DIV'
+    '/=': 'ASIGNAR_DIV',
+    '//': 'DIVISION_ENTERA'
 }
 claves_operadores_comp = operadores_comp.keys()
 
@@ -57,7 +57,8 @@ palabras_reservadas = {
     'while': 'BUCLE_MIENTRAS',
     'do': 'HACER',
     'return': 'RETORNAR',
-    'else': 'CASO_CONTRARIO'
+    'else': 'CASO_CONTRARIO',
+    'struct': 'ESTRUCTURA'
 }
 claves_palabras_res = palabras_reservadas.keys()
 
@@ -142,11 +143,11 @@ def getTokens(linea):
     return tokens
 
 def lex(archivo):
-    f = open('./source/'+archivo+'.c', 'r')
-    finalRes = open('./source/'+archivo+' - Hash Table.txt', 'w')
-    print ("Hash Table de la tokenizacion:\n", file=finalRes)
-    finalRes.close()
-    finalRes = open('./source/'+archivo+' - Hash Table.txt', 'a')
+    f = open(archivo, 'r')
+    #finalRes = open('./source/Hash Table.txt', 'w')
+    #print ("Hash Table de la tokenizacion:\n", file=finalRes)
+    #finalRes.close()
+    #finalRes = open('./source/Hash Table.txt', 'a')
     lectura = f.read()
 
     #Se eliminan los comentarios
@@ -158,7 +159,6 @@ def lex(archivo):
     lineaIndex = 1
 
     hashTable = []
-    hashTableText = []
 
     for linea in codigo:
         preTokens = getTokens(linea)
@@ -196,67 +196,53 @@ def lex(archivo):
                 flag = False
 
                 if re.match(identificadores['IDENTIFICADOR'], token):
-                    tokens[idx] = {'IDENTIFICADOR': token}
-                    tokensText[idx] = tokens[idx]
+                    tokensText[idx] = {'tipo': 'IDENTIFICADOR', 'token': token}
                     flag = True
                 
                 if token in claves_operadores:
-                    tokens[idx] = {"OPERADOR": token}
-                    tokensText[idx] = {"OPERADOR": operadores[token]}
+                    tokensText[idx] = {'tipo': "OPERADOR", 'token': operadores[token]}
                     flag = True
 
                 if token in claves_operadores_comp:
-                    tokens[idx] = {"OPERADOR": token}
-                    tokensText[idx] = {"OPERADOR": operadores_comp[token]}
+                    tokensText[idx] = {'tipo': "OPERADOR",'token': operadores_comp[token]}
                     flag = True
 
                 if token in claves_palabras_res:
-                    tokens[idx] = {"PALABRA_RESERVADA": token}
-                    tokensText[idx] = {"PALABRA_RESERVADA": palabras_reservadas[token]}
+                    tokensText[idx] = {'tipo': "PALABRA_RESERVADA", 'token': palabras_reservadas[token]}
                     flag = True
                 
                 if token in claves_directivas:
-                    tokens[idx] = {"DIRECTIVA": token}
-                    tokensText[idx] = {"DIRECTIVA": directivas[token]}
+                    tokensText[idx] ={ 'tipo':"DIRECTIVA", 'token': directivas[token]}
                     flag = True
 
                 if token in claves_puntuacion:
-                    tokens[idx] = {"PUNTUACION": token}
-                    tokensText[idx] = {"PUNTUACION": puntuacion[token]}
+                    tokensText[idx] = {'tipo': "PUNTUACION", 'token': puntuacion[token]}
                     flag = True
 
                 if token in claves_tipos_de_datos:
-                    tokens[idx] = {"TIPO_DE_DATO": token}
-                    tokensText[idx] = {"TIPO_DE_DATO": tipos_de_datos[token]}
+                    tokensText[idx] = {'tipo': "TIPO_DE_DATO", 'token': tipos_de_datos[token]}
                     flag = True
                 
                 if re.match(cadenas['CADENA'], token):
-                    tokens[idx] = {"CADENA": token.replace("\"", "")}
-                    tokensText[idx] ={"CADENA": token.replace("\"", "")}
+                    tokensText[idx] ={'tipo': "CADENA",'token': token.replace("\"", "")}
                     flag = True
                 
                 if token.isnumeric():
-                    tokens[idx] = {"NUMERO": token}
-                    tokensText[idx] = {"NUMERO": token}
+                    tokensText[idx] = {'tipo': "NUMERO", 'token': token}
                     flag = True
 
                 if not(flag):
-                    tokens[idx] = {"ERROR": token}
-                    tokensText[idx] = {"ERROR": token}
+                    tokensText[idx] = {'tipo': "ERROR", 'token': token}
                 
             lineaIndex += 1
-            hashTable.append(tokens)
-            hashTableText.append(tokensText)
+            hashTable.extend(tokensText)
 
-    print("[", file=finalRes)
-    for i,row in enumerate(hashTable):
-        end = ""
-        if i < len(hashTable)-1:
-            end = ","
-        print("\t"+str(hashTableText[i])+end, file=finalRes)
-    print("]", file=finalRes)
-    finalRes.close()
-
-print("Este lexer puede acceder a los archivos fuente dentro de la carpeta source.")
-test = input("Introduzca el nombre del archivo a tokenizar (Sin extension): ")
-lex(test)
+    #print("[", file=finalRes)
+    #for i,row in enumerate(hashTable):
+    #    end = ""
+    #    if i < len(hashTable)-1:
+    #        end = ","
+    #    print("\t"+str(hashTable[i])+end, file=finalRes)
+    #print("]", file=finalRes)
+    #finalRes.close()
+    return hashTable

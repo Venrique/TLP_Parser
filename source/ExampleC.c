@@ -1,22 +1,18 @@
-#include <math.h>
-#include <stdio.h>
-#define PI 3.14
-
 int convert(long long bin);
 
 int main() {
     long long bin;
-    printf("Enter a binary number: ");
-    scanf("%lld", &bin);
-    printf("%lld in binary = %d in octal", bin, convert(bin));
     return 0;
 }
-
+/*
+La siguiente funcion convierte un numero
+*/
 int convert(long long bin) {
-    int oct = 0, dec = 0, i = 0;
+    int oct = x = 0, dec = 0, i = 0;
+    float var = -1.2345;
 
     // converting binary to decimal
-    while (bin != 0) {
+    while (bin > 0) {
         dec += (bin % 10) * pow(2, i);
         ++i;
         bin /= 10;
