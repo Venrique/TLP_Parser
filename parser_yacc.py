@@ -1,8 +1,6 @@
 import ply.yacc as yacc
 from s_lexer import *
 from gramaticas.init import *
-from gramaticas.op_aritmeticas import *
-from gramaticas.op_logicas import *
 
 VERBOSE = 1
 
@@ -21,6 +19,7 @@ def p_error( p ):
 
 parser = yacc.yacc()
 
-# id + ( id * num.decimal )
-res = parser.parse("2>1+1") # the input
+f = open('./source/ExampleCYacc.c','r')
+res = parser.parse(f.read()) # the input
 print(res)
+f.close()

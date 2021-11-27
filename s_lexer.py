@@ -36,6 +36,7 @@ tokens = (
   'RETORNAR',
   'CASO_CONTRARIO',
   'ESTRUCTURA',
+  'ROMPER',
   #directivas
   "DIR_INCLUIR",
   "DIR_DEFINIR",
@@ -89,7 +90,8 @@ reservadas = {
   'do': 'HACER',
   'return': 'RETORNAR',
   'else': 'CASO_CONTRARIO',
-  'struct': 'ESTRUCTURA'
+  'struct': 'ESTRUCTURA',
+  'break': 'ROMPER'
 }
 
 t_ignore = ' \t'
@@ -130,6 +132,7 @@ t_HACER = r'do'
 t_RETORNAR = r'return'
 t_CASO_CONTRARIO = r'else'
 t_ESTRUCTURA = r'struct'
+t_ROMPER = r'break'
 
 #directivas
 t_DIR_INCLUIR = r'\#include'
