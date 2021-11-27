@@ -158,14 +158,14 @@ def miParser():
                 x=stack[-1]
                 tok=lexer.token()                
             if x in tokens and x != tok.type:
-                print("Error: se esperaba ", tok.type)
-                print('en la posicion: ', tok.lexpos);
+                print("Error: se esperaba ", x)
+                print('en la posicion: ', tok.lexpos+1);
                 return 0;
             if x not in tokens: #es no terminal      
                 celda=buscar_en_tabla(x,tok.type)                            
                 if  celda is None:
                     print("Error: NO se esperaba", tok.type)
-                    print('en la posicion: ', tok.lexpos);
+                    print('en la posicion: ', tok.lexpos+1);
                     return 0;
                 else:
                     stack.pop()
@@ -179,6 +179,55 @@ def miParser():
             #break
         #print(tok)
         #print(tok.type, tok.value, tok.lineno, tok.lexpos)
+        '''
+        print('--------------------------------------------------')
+        print('Token actual: ',tok.type)
+        print('Pila: ', stack)
+        print('Tabla actual: ', gramActual)
+        print('X: ', x)
+        if x == tok.type and x == 'eof':
+            print("Cadena reconocida exitosamente")
+            return #aceptar
+        else:
+            if x == tok.type and x != 'eof':
+                print('******************************')
+                print('Removiendo token: ',x)
+                print('******************************')
+                if gramActual==7 and tok.type=='PAREN_IZQ':
+                    stack.pop()
+                    stack.append(0)
+                    x=stack[-1]
+                    tok=lexer.token()
+                    gramActual=0
+                    parserGen(tablaOperaciones)
+                    gramActual=7
+                else:
+                    stack.pop()
+                    x=stack[-1]
+                    tok=lexer.token()            
+            if x in tokens and x != tok.type:
+                print("Error: se esperaba ", x)
+                print('en la posicion: ', tok.lexpos+1)
+                return 0
+            if x not in tokens: #es no terminal      
+                celda=buscar_en_tabla(x,tok.type,tablaParsing)                            
+                if celda is None:
+                    if tok.type == 'CONDICIONAL' or tok.type == 'CASO_CONTRARIO':
+                        stack.pop() #TEMP
+                        stack.append(7)
+                        x=stack[-1]
+                        aux=gramActual
+                        gramActual=7
+                        parserGen(tablaIfElse)
+                    else:
+                        print("Error: NO se esperaba", tok.type)
+                        print('en la posicion: ', tok.lexpos+1)
+                    return 0
+                else:
+                    stack.pop()
+                    agregar_pila(celda)
+                    x=stack[-1]
+        '''
 
 def buscar_en_tabla(no_terminal, terminal):
     for i in range(len(tabla2)):
