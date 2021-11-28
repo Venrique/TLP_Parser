@@ -27,10 +27,12 @@ def p_error( p ):
         print ("Error en Léxico hasta EOF, no ha sido posible recuperarse.")
 
 parser = yacc.yacc()
-f = open('./source/'+input("Ingrese solo el nombre del archivo .c que desea parsear (debe estar contenido en la carpeta 'Source'):")+'.c','r')
+f = open('./source/'+input("Ingrese solo el nombre del archivo .c que desea parsear\n(debe estar contenido en la carpeta 'Source'): ")+'.c','r')
+print("\nINICIANDO PARSEO")
+print("----------------------------------------------------------\n")
 res = parser.parse(f.read())
 #print(parser.value) # the input
-print("\n----------------------------------------------------------\n")
+print("\n----------------------------------------------------------")
 if error == 0:
     print('Parseo completado exitosamente')
 else:

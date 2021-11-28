@@ -1,6 +1,6 @@
 int main(){
     int c = 5;
-    int a = b = 5;
+    int a 5;
 
     char caracter = 'a';
 
