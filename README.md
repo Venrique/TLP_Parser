@@ -31,9 +31,7 @@ Una vez tenga el proyecto en el directorio deseado y python instalado, se pueden
 Para correr el analizador sintáctico utilizando la librería de yacc:
 
 ```Console
-
 > python parser_yacc.py
-
 ```
 
 Este comando pedirá al usuario que ingrese el nombre del archivo a analizar:
