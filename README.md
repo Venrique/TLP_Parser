@@ -112,7 +112,7 @@ Error: No se esperaba TIPO_ENTERO
 en la posicion:  1
 ```
 ## Ejemplos de código C a analizar
-En este proyecto se utilizá un código de ejemplo en el lenguaje de alto nivel C:
+Algunos ejemplos de código que puede analizar el parser diseñado a mano por el equipo:
 ```c
 while (count < 10){
     if(5){
