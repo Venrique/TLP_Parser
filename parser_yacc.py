@@ -28,7 +28,7 @@ def p_error( p ):
         print ("Error en Léxico hasta EOF, no ha sido posible recuperarse.")
 
 parser = yacc.yacc()
-nombreArchivo = input("Ingrese solo el nombre del archivo .c que desea parsear\n(debe estar contenido en la carpeta 'Source'): ")
+nombreArchivo = input("Ingrese solo el nombre del archivo .c que desea analizar\n(debe estar contenido en la carpeta 'Source'): ")
 f = open('./source/'+nombreArchivo+'.c','r')
 print("\nIniciando análisis sintáctico")
 print("----------------------------------------------------------\nERRORES:")
