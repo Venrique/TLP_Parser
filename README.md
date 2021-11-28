@@ -30,7 +30,7 @@ Una vez tenga el proyecto en el directorio deseado y python instalado, se pueden
 
 Para correr el analizador sintáctico utilizando la librería de yacc:
 
-```console
+```Console
 
 > python parser_yacc.py
 
@@ -38,7 +38,7 @@ Para correr el analizador sintáctico utilizando la librería de yacc:
 
 Este comando pedirá al usuario que ingrese el nombre del archivo a analizar:
 
-```console
+```Console
 
 Ingrese solo el nombre del archivo .c que desea parsear
 
@@ -48,7 +48,7 @@ Ingrese solo el nombre del archivo .c que desea parsear
 
  Y una vez ingresado el archivo, el programa se encargará de analizar el archivo de ejemplo, con lo que el output esperado es el siguiente:
 
-```console
+```Console
 
 Iniciando análisis sintáctico
 ----------------------------------------------------------
@@ -66,7 +66,7 @@ Análisis sintáctico completado exitosamente
 
 Para correr el analizador sintáctico diseñado por el equipo se debe ejecutar el comando:
 
-```console
+```Console
 
 > python parser.py
 
@@ -76,7 +76,7 @@ Para correr el analizador sintáctico diseñado por el equipo se debe ejecutar e
 
 El output esperado para dicho analizador sintáctico es el siguiente:
 
-```
+```Console
 
 TOKEN:  BUCLE_MIENTRAS
 
