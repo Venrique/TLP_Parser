@@ -30,16 +30,16 @@ Rule 0     S' -> program
 Rule 1     program -> SVar program
 Rule 2     program -> SStruct SInst
 Rule 3     program -> empty
-Rule 4     SInst -> SVar SInst
-Rule 5     SInst -> SIfElse SInst
-Rule 6     SInst -> SWhile SInst
-Rule 7     SInst -> SDoWhile SInst
-Rule 8     SInst -> SFor SInst
-Rule 9     SInst -> SRet SInst
-Rule 10    SInst -> SArr SInst
-Rule 11    SInst -> SBreak SInst
-Rule 12    SInst -> empty
-Rule 13    empty -> <empty>
+Rule 4     empty -> <empty>
+Rule 5     SInst -> SVar SInst
+Rule 6     SInst -> SIfElse SInst
+Rule 7     SInst -> SWhile SInst
+Rule 8     SInst -> SDoWhile SInst
+Rule 9     SInst -> SFor SInst
+Rule 10    SInst -> SRet SInst
+Rule 11    SInst -> SArr SInst
+Rule 12    SInst -> SBreak SInst
+Rule 13    SInst -> empty
 Rule 14    SOpe -> AOpe ZOpe
 Rule 15    ZOpe -> SUMAR AOpe ZOpe
 Rule 16    ZOpe -> RESTAR AOpe ZOpe
@@ -104,8 +104,8 @@ Rule 74    BFunc -> COMA IDENTIFICADOR BFunc
 Rule 75    BFunc -> PAREN_DER
 Rule 76    SIfElse -> CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
 Rule 77    AIfElse -> SInst LLAVE_DER BIfElse
-Rule 78    BIfElse -> empty
-Rule 79    BIfElse -> CASO_CONTRARIO CIfElse
+Rule 78    BIfElse -> CASO_CONTRARIO CIfElse
+Rule 79    BIfElse -> empty
 Rule 80    CIfElse -> LLAVE_IZQ AIfElse
 Rule 81    CIfElse -> SIfElse
 Rule 82    SRet -> RETORNAR ARet
@@ -159,7 +159,7 @@ BUCLE_MIENTRAS       : 108 109
 BUCLE_PARA           : 110
 CADENA               : 
 CARACTER             : 44 51 84 93
-CASO_CONTRARIO       : 79
+CASO_CONTRARIO       : 78
 COMA                 : 41 47 59 74 94 104 114 116
 COMILLA_DOBLE        : 
 COMILLA_SIMPLE       : 
@@ -229,7 +229,7 @@ BStruct              : 97 98 106 107
 BVar                 : 40 47
 CArr                 : 88 89
 CDecVarFor           : 115
-CIfElse              : 79
+CIfElse              : 78
 COpe                 : 21 22 23 24 25 26
 CStruct              : 97
 CVar                 : 43 44
@@ -248,23 +248,23 @@ GVar                 : 54 59
 HVar                 : 55
 IVar                 : 57 58
 JVar                 : 56 60
-SArr                 : 10
+SArr                 : 11
 SAsigVarFor          : 110
-SBreak               : 11
+SBreak               : 12
 SDecVarFor           : 110
-SDoWhile             : 7
-SFor                 : 8
+SDoWhile             : 8
+SFor                 : 9
 SFunc                : 45 52
-SIfElse              : 5 81
-SInst                : 2 4 5 6 7 8 9 10 11 62 77 108 109 110
+SIfElse              : 6 81
+SInst                : 2 5 6 7 8 9 10 11 12 62 77 108 109 110
 SOpe                 : 30 43 50 76 83 85 92 108 109 110 111 115
-SRet                 : 9
+SRet                 : 10
 SStruct              : 2
 STipos               : 38 55 86 100 112
-SVar                 : 1 4
-SWhile               : 6
+SVar                 : 1 5
+SWhile               : 7
 ZOpe                 : 14 15 16 17 18 19
-empty                : 3 12 20 27 29 71 78 99 117
+empty                : 3 13 20 27 29 71 79 99 117
 program              : 1 0
 
 Parsing method: LALR
@@ -278,7 +278,7 @@ state 0
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (96) SStruct -> . ESTRUCTURA AStruct
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -289,7 +289,7 @@ state 0
 
     IDENTIFICADOR   shift and go to state 6
     ESTRUCTURA      shift and go to state 7
-    $end            reduce using rule 13 (empty -> .)
+    $end            reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -319,7 +319,7 @@ state 2
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (96) SStruct -> . ESTRUCTURA AStruct
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -330,7 +330,7 @@ state 2
 
     IDENTIFICADOR   shift and go to state 6
     ESTRUCTURA      shift and go to state 7
-    $end            reduce using rule 13 (empty -> .)
+    $end            reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -348,15 +348,15 @@ state 2
 state 3
 
     (2) program -> SStruct . SInst
-    (4) SInst -> . SVar SInst
-    (5) SInst -> . SIfElse SInst
-    (6) SInst -> . SWhile SInst
-    (7) SInst -> . SDoWhile SInst
-    (8) SInst -> . SFor SInst
-    (9) SInst -> . SRet SInst
-    (10) SInst -> . SArr SInst
-    (11) SInst -> . SBreak SInst
-    (12) SInst -> . empty
+    (5) SInst -> . SVar SInst
+    (6) SInst -> . SIfElse SInst
+    (7) SInst -> . SWhile SInst
+    (8) SInst -> . SDoWhile SInst
+    (9) SInst -> . SFor SInst
+    (10) SInst -> . SRet SInst
+    (11) SInst -> . SArr SInst
+    (12) SInst -> . SBreak SInst
+    (13) SInst -> . empty
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -367,7 +367,7 @@ state 3
     (85) SArr -> . IDENTIFICADOR CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER ASIGNAR SOpe PUNTO_COMA
     (86) SArr -> . STipos IDENTIFICADOR CORCHETE_IZQ AArr
     (118) SBreak -> . ROMPER PUNTO_COMA
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -383,7 +383,7 @@ state 3
     BUCLE_PARA      shift and go to state 31
     RETORNAR        shift and go to state 32
     ROMPER          shift and go to state 33
-    $end            reduce using rule 13 (empty -> .)
+    $end            reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -519,16 +519,16 @@ state 16
 
 state 17
 
-    (4) SInst -> SVar . SInst
-    (4) SInst -> . SVar SInst
-    (5) SInst -> . SIfElse SInst
-    (6) SInst -> . SWhile SInst
-    (7) SInst -> . SDoWhile SInst
-    (8) SInst -> . SFor SInst
-    (9) SInst -> . SRet SInst
-    (10) SInst -> . SArr SInst
-    (11) SInst -> . SBreak SInst
-    (12) SInst -> . empty
+    (5) SInst -> SVar . SInst
+    (5) SInst -> . SVar SInst
+    (6) SInst -> . SIfElse SInst
+    (7) SInst -> . SWhile SInst
+    (8) SInst -> . SDoWhile SInst
+    (9) SInst -> . SFor SInst
+    (10) SInst -> . SRet SInst
+    (11) SInst -> . SArr SInst
+    (12) SInst -> . SBreak SInst
+    (13) SInst -> . empty
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -539,7 +539,7 @@ state 17
     (85) SArr -> . IDENTIFICADOR CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER ASIGNAR SOpe PUNTO_COMA
     (86) SArr -> . STipos IDENTIFICADOR CORCHETE_IZQ AArr
     (118) SBreak -> . ROMPER PUNTO_COMA
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -555,8 +555,8 @@ state 17
     BUCLE_PARA      shift and go to state 31
     RETORNAR        shift and go to state 32
     ROMPER          shift and go to state 33
-    $end            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    $end            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -579,16 +579,16 @@ state 17
 
 state 18
 
-    (5) SInst -> SIfElse . SInst
-    (4) SInst -> . SVar SInst
-    (5) SInst -> . SIfElse SInst
-    (6) SInst -> . SWhile SInst
-    (7) SInst -> . SDoWhile SInst
-    (8) SInst -> . SFor SInst
-    (9) SInst -> . SRet SInst
-    (10) SInst -> . SArr SInst
-    (11) SInst -> . SBreak SInst
-    (12) SInst -> . empty
+    (6) SInst -> SIfElse . SInst
+    (5) SInst -> . SVar SInst
+    (6) SInst -> . SIfElse SInst
+    (7) SInst -> . SWhile SInst
+    (8) SInst -> . SDoWhile SInst
+    (9) SInst -> . SFor SInst
+    (10) SInst -> . SRet SInst
+    (11) SInst -> . SArr SInst
+    (12) SInst -> . SBreak SInst
+    (13) SInst -> . empty
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -599,7 +599,7 @@ state 18
     (85) SArr -> . IDENTIFICADOR CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER ASIGNAR SOpe PUNTO_COMA
     (86) SArr -> . STipos IDENTIFICADOR CORCHETE_IZQ AArr
     (118) SBreak -> . ROMPER PUNTO_COMA
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -615,8 +615,8 @@ state 18
     BUCLE_PARA      shift and go to state 31
     RETORNAR        shift and go to state 32
     ROMPER          shift and go to state 33
-    $end            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    $end            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -639,16 +639,16 @@ state 18
 
 state 19
 
-    (6) SInst -> SWhile . SInst
-    (4) SInst -> . SVar SInst
-    (5) SInst -> . SIfElse SInst
-    (6) SInst -> . SWhile SInst
-    (7) SInst -> . SDoWhile SInst
-    (8) SInst -> . SFor SInst
-    (9) SInst -> . SRet SInst
-    (10) SInst -> . SArr SInst
-    (11) SInst -> . SBreak SInst
-    (12) SInst -> . empty
+    (7) SInst -> SWhile . SInst
+    (5) SInst -> . SVar SInst
+    (6) SInst -> . SIfElse SInst
+    (7) SInst -> . SWhile SInst
+    (8) SInst -> . SDoWhile SInst
+    (9) SInst -> . SFor SInst
+    (10) SInst -> . SRet SInst
+    (11) SInst -> . SArr SInst
+    (12) SInst -> . SBreak SInst
+    (13) SInst -> . empty
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -659,7 +659,7 @@ state 19
     (85) SArr -> . IDENTIFICADOR CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER ASIGNAR SOpe PUNTO_COMA
     (86) SArr -> . STipos IDENTIFICADOR CORCHETE_IZQ AArr
     (118) SBreak -> . ROMPER PUNTO_COMA
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -675,8 +675,8 @@ state 19
     BUCLE_PARA      shift and go to state 31
     RETORNAR        shift and go to state 32
     ROMPER          shift and go to state 33
-    $end            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    $end            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -699,16 +699,16 @@ state 19
 
 state 20
 
-    (7) SInst -> SDoWhile . SInst
-    (4) SInst -> . SVar SInst
-    (5) SInst -> . SIfElse SInst
-    (6) SInst -> . SWhile SInst
-    (7) SInst -> . SDoWhile SInst
-    (8) SInst -> . SFor SInst
-    (9) SInst -> . SRet SInst
-    (10) SInst -> . SArr SInst
-    (11) SInst -> . SBreak SInst
-    (12) SInst -> . empty
+    (8) SInst -> SDoWhile . SInst
+    (5) SInst -> . SVar SInst
+    (6) SInst -> . SIfElse SInst
+    (7) SInst -> . SWhile SInst
+    (8) SInst -> . SDoWhile SInst
+    (9) SInst -> . SFor SInst
+    (10) SInst -> . SRet SInst
+    (11) SInst -> . SArr SInst
+    (12) SInst -> . SBreak SInst
+    (13) SInst -> . empty
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -719,7 +719,7 @@ state 20
     (85) SArr -> . IDENTIFICADOR CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER ASIGNAR SOpe PUNTO_COMA
     (86) SArr -> . STipos IDENTIFICADOR CORCHETE_IZQ AArr
     (118) SBreak -> . ROMPER PUNTO_COMA
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -735,8 +735,8 @@ state 20
     BUCLE_PARA      shift and go to state 31
     RETORNAR        shift and go to state 32
     ROMPER          shift and go to state 33
-    $end            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    $end            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -759,16 +759,16 @@ state 20
 
 state 21
 
-    (8) SInst -> SFor . SInst
-    (4) SInst -> . SVar SInst
-    (5) SInst -> . SIfElse SInst
-    (6) SInst -> . SWhile SInst
-    (7) SInst -> . SDoWhile SInst
-    (8) SInst -> . SFor SInst
-    (9) SInst -> . SRet SInst
-    (10) SInst -> . SArr SInst
-    (11) SInst -> . SBreak SInst
-    (12) SInst -> . empty
+    (9) SInst -> SFor . SInst
+    (5) SInst -> . SVar SInst
+    (6) SInst -> . SIfElse SInst
+    (7) SInst -> . SWhile SInst
+    (8) SInst -> . SDoWhile SInst
+    (9) SInst -> . SFor SInst
+    (10) SInst -> . SRet SInst
+    (11) SInst -> . SArr SInst
+    (12) SInst -> . SBreak SInst
+    (13) SInst -> . empty
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -779,7 +779,7 @@ state 21
     (85) SArr -> . IDENTIFICADOR CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER ASIGNAR SOpe PUNTO_COMA
     (86) SArr -> . STipos IDENTIFICADOR CORCHETE_IZQ AArr
     (118) SBreak -> . ROMPER PUNTO_COMA
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -795,8 +795,8 @@ state 21
     BUCLE_PARA      shift and go to state 31
     RETORNAR        shift and go to state 32
     ROMPER          shift and go to state 33
-    $end            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    $end            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -819,16 +819,16 @@ state 21
 
 state 22
 
-    (9) SInst -> SRet . SInst
-    (4) SInst -> . SVar SInst
-    (5) SInst -> . SIfElse SInst
-    (6) SInst -> . SWhile SInst
-    (7) SInst -> . SDoWhile SInst
-    (8) SInst -> . SFor SInst
-    (9) SInst -> . SRet SInst
-    (10) SInst -> . SArr SInst
-    (11) SInst -> . SBreak SInst
-    (12) SInst -> . empty
+    (10) SInst -> SRet . SInst
+    (5) SInst -> . SVar SInst
+    (6) SInst -> . SIfElse SInst
+    (7) SInst -> . SWhile SInst
+    (8) SInst -> . SDoWhile SInst
+    (9) SInst -> . SFor SInst
+    (10) SInst -> . SRet SInst
+    (11) SInst -> . SArr SInst
+    (12) SInst -> . SBreak SInst
+    (13) SInst -> . empty
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -839,7 +839,7 @@ state 22
     (85) SArr -> . IDENTIFICADOR CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER ASIGNAR SOpe PUNTO_COMA
     (86) SArr -> . STipos IDENTIFICADOR CORCHETE_IZQ AArr
     (118) SBreak -> . ROMPER PUNTO_COMA
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -855,8 +855,8 @@ state 22
     BUCLE_PARA      shift and go to state 31
     RETORNAR        shift and go to state 32
     ROMPER          shift and go to state 33
-    $end            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    $end            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -879,16 +879,16 @@ state 22
 
 state 23
 
-    (10) SInst -> SArr . SInst
-    (4) SInst -> . SVar SInst
-    (5) SInst -> . SIfElse SInst
-    (6) SInst -> . SWhile SInst
-    (7) SInst -> . SDoWhile SInst
-    (8) SInst -> . SFor SInst
-    (9) SInst -> . SRet SInst
-    (10) SInst -> . SArr SInst
-    (11) SInst -> . SBreak SInst
-    (12) SInst -> . empty
+    (11) SInst -> SArr . SInst
+    (5) SInst -> . SVar SInst
+    (6) SInst -> . SIfElse SInst
+    (7) SInst -> . SWhile SInst
+    (8) SInst -> . SDoWhile SInst
+    (9) SInst -> . SFor SInst
+    (10) SInst -> . SRet SInst
+    (11) SInst -> . SArr SInst
+    (12) SInst -> . SBreak SInst
+    (13) SInst -> . empty
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -899,7 +899,7 @@ state 23
     (85) SArr -> . IDENTIFICADOR CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER ASIGNAR SOpe PUNTO_COMA
     (86) SArr -> . STipos IDENTIFICADOR CORCHETE_IZQ AArr
     (118) SBreak -> . ROMPER PUNTO_COMA
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -915,8 +915,8 @@ state 23
     BUCLE_PARA      shift and go to state 31
     RETORNAR        shift and go to state 32
     ROMPER          shift and go to state 33
-    $end            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    $end            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -939,16 +939,16 @@ state 23
 
 state 24
 
-    (11) SInst -> SBreak . SInst
-    (4) SInst -> . SVar SInst
-    (5) SInst -> . SIfElse SInst
-    (6) SInst -> . SWhile SInst
-    (7) SInst -> . SDoWhile SInst
-    (8) SInst -> . SFor SInst
-    (9) SInst -> . SRet SInst
-    (10) SInst -> . SArr SInst
-    (11) SInst -> . SBreak SInst
-    (12) SInst -> . empty
+    (12) SInst -> SBreak . SInst
+    (5) SInst -> . SVar SInst
+    (6) SInst -> . SIfElse SInst
+    (7) SInst -> . SWhile SInst
+    (8) SInst -> . SDoWhile SInst
+    (9) SInst -> . SFor SInst
+    (10) SInst -> . SRet SInst
+    (11) SInst -> . SArr SInst
+    (12) SInst -> . SBreak SInst
+    (13) SInst -> . empty
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -959,7 +959,7 @@ state 24
     (85) SArr -> . IDENTIFICADOR CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER ASIGNAR SOpe PUNTO_COMA
     (86) SArr -> . STipos IDENTIFICADOR CORCHETE_IZQ AArr
     (118) SBreak -> . ROMPER PUNTO_COMA
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -975,8 +975,8 @@ state 24
     BUCLE_PARA      shift and go to state 31
     RETORNAR        shift and go to state 32
     ROMPER          shift and go to state 33
-    $end            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    $end            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -999,10 +999,10 @@ state 24
 
 state 25
 
-    (12) SInst -> empty .
+    (13) SInst -> empty .
 
-    $end            reduce using rule 12 (SInst -> empty .)
-    LLAVE_DER       reduce using rule 12 (SInst -> empty .)
+    $end            reduce using rule 13 (SInst -> empty .)
+    LLAVE_DER       reduce using rule 13 (SInst -> empty .)
 
 
 state 26
@@ -1208,7 +1208,7 @@ state 40
     (98) AStruct -> LLAVE_IZQ . BStruct LLAVE_DER DStruct
     (99) BStruct -> . empty
     (100) BStruct -> . STipos IDENTIFICADOR FStruct
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -1217,7 +1217,7 @@ state 40
     (68) STipos -> . TIPO_FLOTANTE
     (69) STipos -> . TIPO_DOUBLE
 
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -1232,66 +1232,66 @@ state 40
 
 state 41
 
-    (4) SInst -> SVar SInst .
+    (5) SInst -> SVar SInst .
 
-    $end            reduce using rule 4 (SInst -> SVar SInst .)
-    LLAVE_DER       reduce using rule 4 (SInst -> SVar SInst .)
+    $end            reduce using rule 5 (SInst -> SVar SInst .)
+    LLAVE_DER       reduce using rule 5 (SInst -> SVar SInst .)
 
 
 state 42
 
-    (5) SInst -> SIfElse SInst .
+    (6) SInst -> SIfElse SInst .
 
-    $end            reduce using rule 5 (SInst -> SIfElse SInst .)
-    LLAVE_DER       reduce using rule 5 (SInst -> SIfElse SInst .)
+    $end            reduce using rule 6 (SInst -> SIfElse SInst .)
+    LLAVE_DER       reduce using rule 6 (SInst -> SIfElse SInst .)
 
 
 state 43
 
-    (6) SInst -> SWhile SInst .
+    (7) SInst -> SWhile SInst .
 
-    $end            reduce using rule 6 (SInst -> SWhile SInst .)
-    LLAVE_DER       reduce using rule 6 (SInst -> SWhile SInst .)
+    $end            reduce using rule 7 (SInst -> SWhile SInst .)
+    LLAVE_DER       reduce using rule 7 (SInst -> SWhile SInst .)
 
 
 state 44
 
-    (7) SInst -> SDoWhile SInst .
+    (8) SInst -> SDoWhile SInst .
 
-    $end            reduce using rule 7 (SInst -> SDoWhile SInst .)
-    LLAVE_DER       reduce using rule 7 (SInst -> SDoWhile SInst .)
+    $end            reduce using rule 8 (SInst -> SDoWhile SInst .)
+    LLAVE_DER       reduce using rule 8 (SInst -> SDoWhile SInst .)
 
 
 state 45
 
-    (8) SInst -> SFor SInst .
+    (9) SInst -> SFor SInst .
 
-    $end            reduce using rule 8 (SInst -> SFor SInst .)
-    LLAVE_DER       reduce using rule 8 (SInst -> SFor SInst .)
+    $end            reduce using rule 9 (SInst -> SFor SInst .)
+    LLAVE_DER       reduce using rule 9 (SInst -> SFor SInst .)
 
 
 state 46
 
-    (9) SInst -> SRet SInst .
+    (10) SInst -> SRet SInst .
 
-    $end            reduce using rule 9 (SInst -> SRet SInst .)
-    LLAVE_DER       reduce using rule 9 (SInst -> SRet SInst .)
+    $end            reduce using rule 10 (SInst -> SRet SInst .)
+    LLAVE_DER       reduce using rule 10 (SInst -> SRet SInst .)
 
 
 state 47
 
-    (10) SInst -> SArr SInst .
+    (11) SInst -> SArr SInst .
 
-    $end            reduce using rule 10 (SInst -> SArr SInst .)
-    LLAVE_DER       reduce using rule 10 (SInst -> SArr SInst .)
+    $end            reduce using rule 11 (SInst -> SArr SInst .)
+    LLAVE_DER       reduce using rule 11 (SInst -> SArr SInst .)
 
 
 state 48
 
-    (11) SInst -> SBreak SInst .
+    (12) SInst -> SBreak SInst .
 
-    $end            reduce using rule 11 (SInst -> SBreak SInst .)
-    LLAVE_DER       reduce using rule 11 (SInst -> SBreak SInst .)
+    $end            reduce using rule 12 (SInst -> SBreak SInst .)
+    LLAVE_DER       reduce using rule 12 (SInst -> SBreak SInst .)
 
 
 state 49
@@ -1365,15 +1365,15 @@ state 52
 state 53
 
     (109) SDoWhile -> HACER LLAVE_IZQ . SInst LLAVE_DER BUCLE_MIENTRAS PAREN_IZQ SOpe PAREN_DER PUNTO_COMA
-    (4) SInst -> . SVar SInst
-    (5) SInst -> . SIfElse SInst
-    (6) SInst -> . SWhile SInst
-    (7) SInst -> . SDoWhile SInst
-    (8) SInst -> . SFor SInst
-    (9) SInst -> . SRet SInst
-    (10) SInst -> . SArr SInst
-    (11) SInst -> . SBreak SInst
-    (12) SInst -> . empty
+    (5) SInst -> . SVar SInst
+    (6) SInst -> . SIfElse SInst
+    (7) SInst -> . SWhile SInst
+    (8) SInst -> . SDoWhile SInst
+    (9) SInst -> . SFor SInst
+    (10) SInst -> . SRet SInst
+    (11) SInst -> . SArr SInst
+    (12) SInst -> . SBreak SInst
+    (13) SInst -> . empty
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -1384,7 +1384,7 @@ state 53
     (85) SArr -> . IDENTIFICADOR CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER ASIGNAR SOpe PUNTO_COMA
     (86) SArr -> . STipos IDENTIFICADOR CORCHETE_IZQ AArr
     (118) SBreak -> . ROMPER PUNTO_COMA
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -1400,7 +1400,7 @@ state 53
     BUCLE_PARA      shift and go to state 31
     RETORNAR        shift and go to state 32
     ROMPER          shift and go to state 33
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -1489,17 +1489,17 @@ state 58
     (18) ZOpe -> . MAYOR_QUE AOpe ZOpe
     (19) ZOpe -> . MENOR_QUE AOpe ZOpe
     (20) ZOpe -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     SUMAR           shift and go to state 90
     RESTAR          shift and go to state 91
     COMPARAR_IGUAL  shift and go to state 92
     MAYOR_QUE       shift and go to state 93
     MENOR_QUE       shift and go to state 94
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    PAREN_DER       reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    PAREN_DER       reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     ZOpe                           shift and go to state 89
     empty                          shift and go to state 95
@@ -1513,22 +1513,22 @@ state 59
     (25) BOpe -> . AND_LOGICO_CONDICIONAL COpe BOpe
     (26) BOpe -> . OR_LOGICO_CONDICIONAL COpe BOpe
     (27) BOpe -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     MULTIPLICAR     shift and go to state 97
     DIVIDIR         shift and go to state 98
     MODULO          shift and go to state 99
     AND_LOGICO_CONDICIONAL shift and go to state 100
     OR_LOGICO_CONDICIONAL shift and go to state 101
-    SUMAR           reduce using rule 13 (empty -> .)
-    RESTAR          reduce using rule 13 (empty -> .)
-    COMPARAR_IGUAL  reduce using rule 13 (empty -> .)
-    MAYOR_QUE       reduce using rule 13 (empty -> .)
-    MENOR_QUE       reduce using rule 13 (empty -> .)
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    PAREN_DER       reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    SUMAR           reduce using rule 4 (empty -> .)
+    RESTAR          reduce using rule 4 (empty -> .)
+    COMPARAR_IGUAL  reduce using rule 4 (empty -> .)
+    MAYOR_QUE       reduce using rule 4 (empty -> .)
+    MENOR_QUE       reduce using rule 4 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    PAREN_DER       reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     BOpe                           shift and go to state 96
     empty                          shift and go to state 102
@@ -1622,25 +1622,25 @@ state 64
     (37) FOpe -> . PUNTO FOpe
     (28) DOpe -> . CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER
     (29) DOpe -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     IDENTIFICADOR   shift and go to state 104
     PUNTO           shift and go to state 107
     CORCHETE_IZQ    shift and go to state 108
-    MULTIPLICAR     reduce using rule 13 (empty -> .)
-    DIVIDIR         reduce using rule 13 (empty -> .)
-    MODULO          reduce using rule 13 (empty -> .)
-    AND_LOGICO_CONDICIONAL reduce using rule 13 (empty -> .)
-    OR_LOGICO_CONDICIONAL reduce using rule 13 (empty -> .)
-    SUMAR           reduce using rule 13 (empty -> .)
-    RESTAR          reduce using rule 13 (empty -> .)
-    COMPARAR_IGUAL  reduce using rule 13 (empty -> .)
-    MAYOR_QUE       reduce using rule 13 (empty -> .)
-    MENOR_QUE       reduce using rule 13 (empty -> .)
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    PAREN_DER       reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    MULTIPLICAR     reduce using rule 4 (empty -> .)
+    DIVIDIR         reduce using rule 4 (empty -> .)
+    MODULO          reduce using rule 4 (empty -> .)
+    AND_LOGICO_CONDICIONAL reduce using rule 4 (empty -> .)
+    OR_LOGICO_CONDICIONAL reduce using rule 4 (empty -> .)
+    SUMAR           reduce using rule 4 (empty -> .)
+    RESTAR          reduce using rule 4 (empty -> .)
+    COMPARAR_IGUAL  reduce using rule 4 (empty -> .)
+    MAYOR_QUE       reduce using rule 4 (empty -> .)
+    MENOR_QUE       reduce using rule 4 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    PAREN_DER       reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     FOpe                           shift and go to state 105
     DOpe                           shift and go to state 106
@@ -1841,25 +1841,25 @@ state 75
     (35) FOpe -> . DOpe
     (36) FOpe -> . IDENTIFICADOR FOpe
     (37) FOpe -> . PUNTO FOpe
-    (13) empty -> .
+    (4) empty -> .
     (28) DOpe -> . CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER
     (29) DOpe -> . empty
 
     PAREN_IZQ       shift and go to state 121
     IDENTIFICADOR   shift and go to state 104
     PUNTO           shift and go to state 107
-    ASIGNAR         reduce using rule 13 (empty -> .)
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    MULTIPLICAR     reduce using rule 13 (empty -> .)
-    DIVIDIR         reduce using rule 13 (empty -> .)
-    MODULO          reduce using rule 13 (empty -> .)
-    AND_LOGICO_CONDICIONAL reduce using rule 13 (empty -> .)
-    OR_LOGICO_CONDICIONAL reduce using rule 13 (empty -> .)
-    SUMAR           reduce using rule 13 (empty -> .)
-    RESTAR          reduce using rule 13 (empty -> .)
-    COMPARAR_IGUAL  reduce using rule 13 (empty -> .)
-    MAYOR_QUE       reduce using rule 13 (empty -> .)
-    MENOR_QUE       reduce using rule 13 (empty -> .)
+    ASIGNAR         reduce using rule 4 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    MULTIPLICAR     reduce using rule 4 (empty -> .)
+    DIVIDIR         reduce using rule 4 (empty -> .)
+    MODULO          reduce using rule 4 (empty -> .)
+    AND_LOGICO_CONDICIONAL reduce using rule 4 (empty -> .)
+    OR_LOGICO_CONDICIONAL reduce using rule 4 (empty -> .)
+    SUMAR           reduce using rule 4 (empty -> .)
+    RESTAR          reduce using rule 4 (empty -> .)
+    COMPARAR_IGUAL  reduce using rule 4 (empty -> .)
+    MAYOR_QUE       reduce using rule 4 (empty -> .)
+    MENOR_QUE       reduce using rule 4 (empty -> .)
     CORCHETE_IZQ    shift and go to state 108
 
     SFunc                          shift and go to state 120
@@ -1872,7 +1872,7 @@ state 76
     (97) AStruct -> IDENTIFICADOR LLAVE_IZQ . BStruct LLAVE_DER CStruct
     (99) BStruct -> . empty
     (100) BStruct -> . STipos IDENTIFICADOR FStruct
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -1881,7 +1881,7 @@ state 76
     (68) STipos -> . TIPO_FLOTANTE
     (69) STipos -> . TIPO_DOUBLE
 
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -2257,25 +2257,25 @@ state 104
     (37) FOpe -> . PUNTO FOpe
     (28) DOpe -> . CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER
     (29) DOpe -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     IDENTIFICADOR   shift and go to state 104
     PUNTO           shift and go to state 107
     CORCHETE_IZQ    shift and go to state 108
-    MULTIPLICAR     reduce using rule 13 (empty -> .)
-    DIVIDIR         reduce using rule 13 (empty -> .)
-    MODULO          reduce using rule 13 (empty -> .)
-    AND_LOGICO_CONDICIONAL reduce using rule 13 (empty -> .)
-    OR_LOGICO_CONDICIONAL reduce using rule 13 (empty -> .)
-    SUMAR           reduce using rule 13 (empty -> .)
-    RESTAR          reduce using rule 13 (empty -> .)
-    COMPARAR_IGUAL  reduce using rule 13 (empty -> .)
-    MAYOR_QUE       reduce using rule 13 (empty -> .)
-    MENOR_QUE       reduce using rule 13 (empty -> .)
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    PAREN_DER       reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    MULTIPLICAR     reduce using rule 4 (empty -> .)
+    DIVIDIR         reduce using rule 4 (empty -> .)
+    MODULO          reduce using rule 4 (empty -> .)
+    AND_LOGICO_CONDICIONAL reduce using rule 4 (empty -> .)
+    OR_LOGICO_CONDICIONAL reduce using rule 4 (empty -> .)
+    SUMAR           reduce using rule 4 (empty -> .)
+    RESTAR          reduce using rule 4 (empty -> .)
+    COMPARAR_IGUAL  reduce using rule 4 (empty -> .)
+    MAYOR_QUE       reduce using rule 4 (empty -> .)
+    MENOR_QUE       reduce using rule 4 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    PAREN_DER       reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     FOpe                           shift and go to state 146
     DOpe                           shift and go to state 106
@@ -2329,25 +2329,25 @@ state 107
     (37) FOpe -> . PUNTO FOpe
     (28) DOpe -> . CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER
     (29) DOpe -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     IDENTIFICADOR   shift and go to state 104
     PUNTO           shift and go to state 107
     CORCHETE_IZQ    shift and go to state 108
-    MULTIPLICAR     reduce using rule 13 (empty -> .)
-    DIVIDIR         reduce using rule 13 (empty -> .)
-    MODULO          reduce using rule 13 (empty -> .)
-    AND_LOGICO_CONDICIONAL reduce using rule 13 (empty -> .)
-    OR_LOGICO_CONDICIONAL reduce using rule 13 (empty -> .)
-    SUMAR           reduce using rule 13 (empty -> .)
-    RESTAR          reduce using rule 13 (empty -> .)
-    COMPARAR_IGUAL  reduce using rule 13 (empty -> .)
-    MAYOR_QUE       reduce using rule 13 (empty -> .)
-    MENOR_QUE       reduce using rule 13 (empty -> .)
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    PAREN_DER       reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    MULTIPLICAR     reduce using rule 4 (empty -> .)
+    DIVIDIR         reduce using rule 4 (empty -> .)
+    MODULO          reduce using rule 4 (empty -> .)
+    AND_LOGICO_CONDICIONAL reduce using rule 4 (empty -> .)
+    OR_LOGICO_CONDICIONAL reduce using rule 4 (empty -> .)
+    SUMAR           reduce using rule 4 (empty -> .)
+    RESTAR          reduce using rule 4 (empty -> .)
+    COMPARAR_IGUAL  reduce using rule 4 (empty -> .)
+    MAYOR_QUE       reduce using rule 4 (empty -> .)
+    MENOR_QUE       reduce using rule 4 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    PAREN_DER       reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     FOpe                           shift and go to state 147
     DOpe                           shift and go to state 106
@@ -2483,26 +2483,26 @@ state 116
     (35) FOpe -> . DOpe
     (36) FOpe -> . IDENTIFICADOR FOpe
     (37) FOpe -> . PUNTO FOpe
-    (13) empty -> .
+    (4) empty -> .
     (28) DOpe -> . CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER
     (29) DOpe -> . empty
 
     PAREN_IZQ       shift and go to state 121
     IDENTIFICADOR   shift and go to state 104
     PUNTO           shift and go to state 107
-    ASIGNAR         reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    MULTIPLICAR     reduce using rule 13 (empty -> .)
-    DIVIDIR         reduce using rule 13 (empty -> .)
-    MODULO          reduce using rule 13 (empty -> .)
-    AND_LOGICO_CONDICIONAL reduce using rule 13 (empty -> .)
-    OR_LOGICO_CONDICIONAL reduce using rule 13 (empty -> .)
-    SUMAR           reduce using rule 13 (empty -> .)
-    RESTAR          reduce using rule 13 (empty -> .)
-    COMPARAR_IGUAL  reduce using rule 13 (empty -> .)
-    MAYOR_QUE       reduce using rule 13 (empty -> .)
-    MENOR_QUE       reduce using rule 13 (empty -> .)
+    ASIGNAR         reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    MULTIPLICAR     reduce using rule 4 (empty -> .)
+    DIVIDIR         reduce using rule 4 (empty -> .)
+    MODULO          reduce using rule 4 (empty -> .)
+    AND_LOGICO_CONDICIONAL reduce using rule 4 (empty -> .)
+    OR_LOGICO_CONDICIONAL reduce using rule 4 (empty -> .)
+    SUMAR           reduce using rule 4 (empty -> .)
+    RESTAR          reduce using rule 4 (empty -> .)
+    COMPARAR_IGUAL  reduce using rule 4 (empty -> .)
+    MAYOR_QUE       reduce using rule 4 (empty -> .)
+    MENOR_QUE       reduce using rule 4 (empty -> .)
     CORCHETE_IZQ    shift and go to state 108
 
     SFunc                          shift and go to state 161
@@ -2750,17 +2750,17 @@ state 135
     (18) ZOpe -> . MAYOR_QUE AOpe ZOpe
     (19) ZOpe -> . MENOR_QUE AOpe ZOpe
     (20) ZOpe -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     SUMAR           shift and go to state 90
     RESTAR          shift and go to state 91
     COMPARAR_IGUAL  shift and go to state 92
     MAYOR_QUE       shift and go to state 93
     MENOR_QUE       shift and go to state 94
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    PAREN_DER       reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    PAREN_DER       reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     ZOpe                           shift and go to state 184
     empty                          shift and go to state 95
@@ -2774,17 +2774,17 @@ state 136
     (18) ZOpe -> . MAYOR_QUE AOpe ZOpe
     (19) ZOpe -> . MENOR_QUE AOpe ZOpe
     (20) ZOpe -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     SUMAR           shift and go to state 90
     RESTAR          shift and go to state 91
     COMPARAR_IGUAL  shift and go to state 92
     MAYOR_QUE       shift and go to state 93
     MENOR_QUE       shift and go to state 94
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    PAREN_DER       reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    PAREN_DER       reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     ZOpe                           shift and go to state 185
     empty                          shift and go to state 95
@@ -2798,17 +2798,17 @@ state 137
     (18) ZOpe -> . MAYOR_QUE AOpe ZOpe
     (19) ZOpe -> . MENOR_QUE AOpe ZOpe
     (20) ZOpe -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     SUMAR           shift and go to state 90
     RESTAR          shift and go to state 91
     COMPARAR_IGUAL  shift and go to state 92
     MAYOR_QUE       shift and go to state 93
     MENOR_QUE       shift and go to state 94
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    PAREN_DER       reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    PAREN_DER       reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     ZOpe                           shift and go to state 186
     empty                          shift and go to state 95
@@ -2822,17 +2822,17 @@ state 138
     (18) ZOpe -> . MAYOR_QUE AOpe ZOpe
     (19) ZOpe -> . MENOR_QUE AOpe ZOpe
     (20) ZOpe -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     SUMAR           shift and go to state 90
     RESTAR          shift and go to state 91
     COMPARAR_IGUAL  shift and go to state 92
     MAYOR_QUE       shift and go to state 93
     MENOR_QUE       shift and go to state 94
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    PAREN_DER       reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    PAREN_DER       reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     ZOpe                           shift and go to state 187
     empty                          shift and go to state 95
@@ -2846,17 +2846,17 @@ state 139
     (18) ZOpe -> . MAYOR_QUE AOpe ZOpe
     (19) ZOpe -> . MENOR_QUE AOpe ZOpe
     (20) ZOpe -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     SUMAR           shift and go to state 90
     RESTAR          shift and go to state 91
     COMPARAR_IGUAL  shift and go to state 92
     MAYOR_QUE       shift and go to state 93
     MENOR_QUE       shift and go to state 94
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    PAREN_DER       reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    PAREN_DER       reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     ZOpe                           shift and go to state 188
     empty                          shift and go to state 95
@@ -2870,22 +2870,22 @@ state 140
     (25) BOpe -> . AND_LOGICO_CONDICIONAL COpe BOpe
     (26) BOpe -> . OR_LOGICO_CONDICIONAL COpe BOpe
     (27) BOpe -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     MULTIPLICAR     shift and go to state 97
     DIVIDIR         shift and go to state 98
     MODULO          shift and go to state 99
     AND_LOGICO_CONDICIONAL shift and go to state 100
     OR_LOGICO_CONDICIONAL shift and go to state 101
-    SUMAR           reduce using rule 13 (empty -> .)
-    RESTAR          reduce using rule 13 (empty -> .)
-    COMPARAR_IGUAL  reduce using rule 13 (empty -> .)
-    MAYOR_QUE       reduce using rule 13 (empty -> .)
-    MENOR_QUE       reduce using rule 13 (empty -> .)
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    PAREN_DER       reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    SUMAR           reduce using rule 4 (empty -> .)
+    RESTAR          reduce using rule 4 (empty -> .)
+    COMPARAR_IGUAL  reduce using rule 4 (empty -> .)
+    MAYOR_QUE       reduce using rule 4 (empty -> .)
+    MENOR_QUE       reduce using rule 4 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    PAREN_DER       reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     BOpe                           shift and go to state 189
     empty                          shift and go to state 102
@@ -2899,22 +2899,22 @@ state 141
     (25) BOpe -> . AND_LOGICO_CONDICIONAL COpe BOpe
     (26) BOpe -> . OR_LOGICO_CONDICIONAL COpe BOpe
     (27) BOpe -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     MULTIPLICAR     shift and go to state 97
     DIVIDIR         shift and go to state 98
     MODULO          shift and go to state 99
     AND_LOGICO_CONDICIONAL shift and go to state 100
     OR_LOGICO_CONDICIONAL shift and go to state 101
-    SUMAR           reduce using rule 13 (empty -> .)
-    RESTAR          reduce using rule 13 (empty -> .)
-    COMPARAR_IGUAL  reduce using rule 13 (empty -> .)
-    MAYOR_QUE       reduce using rule 13 (empty -> .)
-    MENOR_QUE       reduce using rule 13 (empty -> .)
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    PAREN_DER       reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    SUMAR           reduce using rule 4 (empty -> .)
+    RESTAR          reduce using rule 4 (empty -> .)
+    COMPARAR_IGUAL  reduce using rule 4 (empty -> .)
+    MAYOR_QUE       reduce using rule 4 (empty -> .)
+    MENOR_QUE       reduce using rule 4 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    PAREN_DER       reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     BOpe                           shift and go to state 190
     empty                          shift and go to state 102
@@ -2928,22 +2928,22 @@ state 142
     (25) BOpe -> . AND_LOGICO_CONDICIONAL COpe BOpe
     (26) BOpe -> . OR_LOGICO_CONDICIONAL COpe BOpe
     (27) BOpe -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     MULTIPLICAR     shift and go to state 97
     DIVIDIR         shift and go to state 98
     MODULO          shift and go to state 99
     AND_LOGICO_CONDICIONAL shift and go to state 100
     OR_LOGICO_CONDICIONAL shift and go to state 101
-    SUMAR           reduce using rule 13 (empty -> .)
-    RESTAR          reduce using rule 13 (empty -> .)
-    COMPARAR_IGUAL  reduce using rule 13 (empty -> .)
-    MAYOR_QUE       reduce using rule 13 (empty -> .)
-    MENOR_QUE       reduce using rule 13 (empty -> .)
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    PAREN_DER       reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    SUMAR           reduce using rule 4 (empty -> .)
+    RESTAR          reduce using rule 4 (empty -> .)
+    COMPARAR_IGUAL  reduce using rule 4 (empty -> .)
+    MAYOR_QUE       reduce using rule 4 (empty -> .)
+    MENOR_QUE       reduce using rule 4 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    PAREN_DER       reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     BOpe                           shift and go to state 191
     empty                          shift and go to state 102
@@ -2957,22 +2957,22 @@ state 143
     (25) BOpe -> . AND_LOGICO_CONDICIONAL COpe BOpe
     (26) BOpe -> . OR_LOGICO_CONDICIONAL COpe BOpe
     (27) BOpe -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     MULTIPLICAR     shift and go to state 97
     DIVIDIR         shift and go to state 98
     MODULO          shift and go to state 99
     AND_LOGICO_CONDICIONAL shift and go to state 100
     OR_LOGICO_CONDICIONAL shift and go to state 101
-    SUMAR           reduce using rule 13 (empty -> .)
-    RESTAR          reduce using rule 13 (empty -> .)
-    COMPARAR_IGUAL  reduce using rule 13 (empty -> .)
-    MAYOR_QUE       reduce using rule 13 (empty -> .)
-    MENOR_QUE       reduce using rule 13 (empty -> .)
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    PAREN_DER       reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    SUMAR           reduce using rule 4 (empty -> .)
+    RESTAR          reduce using rule 4 (empty -> .)
+    COMPARAR_IGUAL  reduce using rule 4 (empty -> .)
+    MAYOR_QUE       reduce using rule 4 (empty -> .)
+    MENOR_QUE       reduce using rule 4 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    PAREN_DER       reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     BOpe                           shift and go to state 192
     empty                          shift and go to state 102
@@ -2986,22 +2986,22 @@ state 144
     (25) BOpe -> . AND_LOGICO_CONDICIONAL COpe BOpe
     (26) BOpe -> . OR_LOGICO_CONDICIONAL COpe BOpe
     (27) BOpe -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     MULTIPLICAR     shift and go to state 97
     DIVIDIR         shift and go to state 98
     MODULO          shift and go to state 99
     AND_LOGICO_CONDICIONAL shift and go to state 100
     OR_LOGICO_CONDICIONAL shift and go to state 101
-    SUMAR           reduce using rule 13 (empty -> .)
-    RESTAR          reduce using rule 13 (empty -> .)
-    COMPARAR_IGUAL  reduce using rule 13 (empty -> .)
-    MAYOR_QUE       reduce using rule 13 (empty -> .)
-    MENOR_QUE       reduce using rule 13 (empty -> .)
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
-    PAREN_DER       reduce using rule 13 (empty -> .)
-    COMA            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    SUMAR           reduce using rule 4 (empty -> .)
+    RESTAR          reduce using rule 4 (empty -> .)
+    COMPARAR_IGUAL  reduce using rule 4 (empty -> .)
+    MAYOR_QUE       reduce using rule 4 (empty -> .)
+    MENOR_QUE       reduce using rule 4 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
+    PAREN_DER       reduce using rule 4 (empty -> .)
+    COMA            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     BOpe                           shift and go to state 193
     empty                          shift and go to state 102
@@ -3215,15 +3215,15 @@ state 155
 state 156
 
     (62) JVar -> LLAVE_IZQ . SInst LLAVE_DER
-    (4) SInst -> . SVar SInst
-    (5) SInst -> . SIfElse SInst
-    (6) SInst -> . SWhile SInst
-    (7) SInst -> . SDoWhile SInst
-    (8) SInst -> . SFor SInst
-    (9) SInst -> . SRet SInst
-    (10) SInst -> . SArr SInst
-    (11) SInst -> . SBreak SInst
-    (12) SInst -> . empty
+    (5) SInst -> . SVar SInst
+    (6) SInst -> . SIfElse SInst
+    (7) SInst -> . SWhile SInst
+    (8) SInst -> . SDoWhile SInst
+    (9) SInst -> . SFor SInst
+    (10) SInst -> . SRet SInst
+    (11) SInst -> . SArr SInst
+    (12) SInst -> . SBreak SInst
+    (13) SInst -> . empty
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -3234,7 +3234,7 @@ state 156
     (85) SArr -> . IDENTIFICADOR CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER ASIGNAR SOpe PUNTO_COMA
     (86) SArr -> . STipos IDENTIFICADOR CORCHETE_IZQ AArr
     (118) SBreak -> . ROMPER PUNTO_COMA
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -3250,7 +3250,7 @@ state 156
     BUCLE_PARA      shift and go to state 31
     RETORNAR        shift and go to state 32
     ROMPER          shift and go to state 33
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -3511,7 +3511,7 @@ state 171
     (106) FStruct -> PUNTO_COMA . BStruct
     (99) BStruct -> . empty
     (100) BStruct -> . STipos IDENTIFICADOR FStruct
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -3520,7 +3520,7 @@ state 171
     (68) STipos -> . TIPO_FLOTANTE
     (69) STipos -> . TIPO_DOUBLE
 
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -3607,15 +3607,15 @@ state 177
 
     (76) SIfElse -> CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ . AIfElse
     (77) AIfElse -> . SInst LLAVE_DER BIfElse
-    (4) SInst -> . SVar SInst
-    (5) SInst -> . SIfElse SInst
-    (6) SInst -> . SWhile SInst
-    (7) SInst -> . SDoWhile SInst
-    (8) SInst -> . SFor SInst
-    (9) SInst -> . SRet SInst
-    (10) SInst -> . SArr SInst
-    (11) SInst -> . SBreak SInst
-    (12) SInst -> . empty
+    (5) SInst -> . SVar SInst
+    (6) SInst -> . SIfElse SInst
+    (7) SInst -> . SWhile SInst
+    (8) SInst -> . SDoWhile SInst
+    (9) SInst -> . SFor SInst
+    (10) SInst -> . SRet SInst
+    (11) SInst -> . SArr SInst
+    (12) SInst -> . SBreak SInst
+    (13) SInst -> . empty
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -3626,7 +3626,7 @@ state 177
     (85) SArr -> . IDENTIFICADOR CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER ASIGNAR SOpe PUNTO_COMA
     (86) SArr -> . STipos IDENTIFICADOR CORCHETE_IZQ AArr
     (118) SBreak -> . ROMPER PUNTO_COMA
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -3642,7 +3642,7 @@ state 177
     BUCLE_PARA      shift and go to state 31
     RETORNAR        shift and go to state 32
     ROMPER          shift and go to state 33
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -3667,15 +3667,15 @@ state 177
 state 178
 
     (108) SWhile -> BUCLE_MIENTRAS PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ . SInst LLAVE_DER
-    (4) SInst -> . SVar SInst
-    (5) SInst -> . SIfElse SInst
-    (6) SInst -> . SWhile SInst
-    (7) SInst -> . SDoWhile SInst
-    (8) SInst -> . SFor SInst
-    (9) SInst -> . SRet SInst
-    (10) SInst -> . SArr SInst
-    (11) SInst -> . SBreak SInst
-    (12) SInst -> . empty
+    (5) SInst -> . SVar SInst
+    (6) SInst -> . SIfElse SInst
+    (7) SInst -> . SWhile SInst
+    (8) SInst -> . SDoWhile SInst
+    (9) SInst -> . SFor SInst
+    (10) SInst -> . SRet SInst
+    (11) SInst -> . SArr SInst
+    (12) SInst -> . SBreak SInst
+    (13) SInst -> . empty
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -3686,7 +3686,7 @@ state 178
     (85) SArr -> . IDENTIFICADOR CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER ASIGNAR SOpe PUNTO_COMA
     (86) SArr -> . STipos IDENTIFICADOR CORCHETE_IZQ AArr
     (118) SBreak -> . ROMPER PUNTO_COMA
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -3702,7 +3702,7 @@ state 178
     BUCLE_PARA      shift and go to state 31
     RETORNAR        shift and go to state 32
     ROMPER          shift and go to state 33
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -4386,10 +4386,10 @@ state 223
     (115) BDecVarFor -> SOpe . CDecVarFor
     (116) CDecVarFor -> . COMA BDecVarFor
     (117) CDecVarFor -> . empty
-    (13) empty -> .
+    (4) empty -> .
 
     COMA            shift and go to state 239
-    PUNTO_COMA      reduce using rule 13 (empty -> .)
+    PUNTO_COMA      reduce using rule 4 (empty -> .)
 
     CDecVarFor                     shift and go to state 238
     empty                          shift and go to state 240
@@ -4532,30 +4532,30 @@ state 232
 state 233
 
     (77) AIfElse -> SInst LLAVE_DER . BIfElse
-    (78) BIfElse -> . empty
-    (79) BIfElse -> . CASO_CONTRARIO CIfElse
-    (13) empty -> .
+    (78) BIfElse -> . CASO_CONTRARIO CIfElse
+    (79) BIfElse -> . empty
+    (4) empty -> .
 
-    CASO_CONTRARIO  shift and go to state 249
-    IDENTIFICADOR   reduce using rule 13 (empty -> .)
-    CONDICIONAL     reduce using rule 13 (empty -> .)
-    BUCLE_MIENTRAS  reduce using rule 13 (empty -> .)
-    HACER           reduce using rule 13 (empty -> .)
-    BUCLE_PARA      reduce using rule 13 (empty -> .)
-    RETORNAR        reduce using rule 13 (empty -> .)
-    ROMPER          reduce using rule 13 (empty -> .)
-    TIPO_ENTERO     reduce using rule 13 (empty -> .)
-    TIPO_CADENA     reduce using rule 13 (empty -> .)
-    TIPO_LARGO      reduce using rule 13 (empty -> .)
-    TIPO_VACIO      reduce using rule 13 (empty -> .)
-    TIPO_CARACTER   reduce using rule 13 (empty -> .)
-    TIPO_FLOTANTE   reduce using rule 13 (empty -> .)
-    TIPO_DOUBLE     reduce using rule 13 (empty -> .)
-    $end            reduce using rule 13 (empty -> .)
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    CASO_CONTRARIO  shift and go to state 248
+    IDENTIFICADOR   reduce using rule 4 (empty -> .)
+    CONDICIONAL     reduce using rule 4 (empty -> .)
+    BUCLE_MIENTRAS  reduce using rule 4 (empty -> .)
+    HACER           reduce using rule 4 (empty -> .)
+    BUCLE_PARA      reduce using rule 4 (empty -> .)
+    RETORNAR        reduce using rule 4 (empty -> .)
+    ROMPER          reduce using rule 4 (empty -> .)
+    TIPO_ENTERO     reduce using rule 4 (empty -> .)
+    TIPO_CADENA     reduce using rule 4 (empty -> .)
+    TIPO_LARGO      reduce using rule 4 (empty -> .)
+    TIPO_VACIO      reduce using rule 4 (empty -> .)
+    TIPO_CARACTER   reduce using rule 4 (empty -> .)
+    TIPO_FLOTANTE   reduce using rule 4 (empty -> .)
+    TIPO_DOUBLE     reduce using rule 4 (empty -> .)
+    $end            reduce using rule 4 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
 
     BIfElse                        shift and go to state 247
-    empty                          shift and go to state 248
+    empty                          shift and go to state 249
 
 state 234
 
@@ -4651,7 +4651,7 @@ state 242
     (107) FStruct -> CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER PUNTO_COMA . BStruct
     (99) BStruct -> . empty
     (100) BStruct -> . STipos IDENTIFICADOR FStruct
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -4660,7 +4660,7 @@ state 242
     (68) STipos -> . TIPO_FLOTANTE
     (69) STipos -> . TIPO_DOUBLE
 
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -4773,29 +4773,7 @@ state 247
 
 state 248
 
-    (78) BIfElse -> empty .
-
-    IDENTIFICADOR   reduce using rule 78 (BIfElse -> empty .)
-    CONDICIONAL     reduce using rule 78 (BIfElse -> empty .)
-    BUCLE_MIENTRAS  reduce using rule 78 (BIfElse -> empty .)
-    HACER           reduce using rule 78 (BIfElse -> empty .)
-    BUCLE_PARA      reduce using rule 78 (BIfElse -> empty .)
-    RETORNAR        reduce using rule 78 (BIfElse -> empty .)
-    ROMPER          reduce using rule 78 (BIfElse -> empty .)
-    TIPO_ENTERO     reduce using rule 78 (BIfElse -> empty .)
-    TIPO_CADENA     reduce using rule 78 (BIfElse -> empty .)
-    TIPO_LARGO      reduce using rule 78 (BIfElse -> empty .)
-    TIPO_VACIO      reduce using rule 78 (BIfElse -> empty .)
-    TIPO_CARACTER   reduce using rule 78 (BIfElse -> empty .)
-    TIPO_FLOTANTE   reduce using rule 78 (BIfElse -> empty .)
-    TIPO_DOUBLE     reduce using rule 78 (BIfElse -> empty .)
-    $end            reduce using rule 78 (BIfElse -> empty .)
-    LLAVE_DER       reduce using rule 78 (BIfElse -> empty .)
-
-
-state 249
-
-    (79) BIfElse -> CASO_CONTRARIO . CIfElse
+    (78) BIfElse -> CASO_CONTRARIO . CIfElse
     (80) CIfElse -> . LLAVE_IZQ AIfElse
     (81) CIfElse -> . SIfElse
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -4805,6 +4783,28 @@ state 249
 
     CIfElse                        shift and go to state 257
     SIfElse                        shift and go to state 259
+
+state 249
+
+    (79) BIfElse -> empty .
+
+    IDENTIFICADOR   reduce using rule 79 (BIfElse -> empty .)
+    CONDICIONAL     reduce using rule 79 (BIfElse -> empty .)
+    BUCLE_MIENTRAS  reduce using rule 79 (BIfElse -> empty .)
+    HACER           reduce using rule 79 (BIfElse -> empty .)
+    BUCLE_PARA      reduce using rule 79 (BIfElse -> empty .)
+    RETORNAR        reduce using rule 79 (BIfElse -> empty .)
+    ROMPER          reduce using rule 79 (BIfElse -> empty .)
+    TIPO_ENTERO     reduce using rule 79 (BIfElse -> empty .)
+    TIPO_CADENA     reduce using rule 79 (BIfElse -> empty .)
+    TIPO_LARGO      reduce using rule 79 (BIfElse -> empty .)
+    TIPO_VACIO      reduce using rule 79 (BIfElse -> empty .)
+    TIPO_CARACTER   reduce using rule 79 (BIfElse -> empty .)
+    TIPO_FLOTANTE   reduce using rule 79 (BIfElse -> empty .)
+    TIPO_DOUBLE     reduce using rule 79 (BIfElse -> empty .)
+    $end            reduce using rule 79 (BIfElse -> empty .)
+    LLAVE_DER       reduce using rule 79 (BIfElse -> empty .)
+
 
 state 250
 
@@ -4901,39 +4901,39 @@ state 256
 
 state 257
 
-    (79) BIfElse -> CASO_CONTRARIO CIfElse .
+    (78) BIfElse -> CASO_CONTRARIO CIfElse .
 
-    IDENTIFICADOR   reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
-    CONDICIONAL     reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
-    BUCLE_MIENTRAS  reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
-    HACER           reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
-    BUCLE_PARA      reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
-    RETORNAR        reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
-    ROMPER          reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
-    TIPO_ENTERO     reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
-    TIPO_CADENA     reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
-    TIPO_LARGO      reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
-    TIPO_VACIO      reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
-    TIPO_CARACTER   reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
-    TIPO_FLOTANTE   reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
-    TIPO_DOUBLE     reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
-    $end            reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
-    LLAVE_DER       reduce using rule 79 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    IDENTIFICADOR   reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    CONDICIONAL     reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    BUCLE_MIENTRAS  reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    HACER           reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    BUCLE_PARA      reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    RETORNAR        reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    ROMPER          reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    TIPO_ENTERO     reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    TIPO_CADENA     reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    TIPO_LARGO      reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    TIPO_VACIO      reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    TIPO_CARACTER   reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    TIPO_FLOTANTE   reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    TIPO_DOUBLE     reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    $end            reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
+    LLAVE_DER       reduce using rule 78 (BIfElse -> CASO_CONTRARIO CIfElse .)
 
 
 state 258
 
     (80) CIfElse -> LLAVE_IZQ . AIfElse
     (77) AIfElse -> . SInst LLAVE_DER BIfElse
-    (4) SInst -> . SVar SInst
-    (5) SInst -> . SIfElse SInst
-    (6) SInst -> . SWhile SInst
-    (7) SInst -> . SDoWhile SInst
-    (8) SInst -> . SFor SInst
-    (9) SInst -> . SRet SInst
-    (10) SInst -> . SArr SInst
-    (11) SInst -> . SBreak SInst
-    (12) SInst -> . empty
+    (5) SInst -> . SVar SInst
+    (6) SInst -> . SIfElse SInst
+    (7) SInst -> . SWhile SInst
+    (8) SInst -> . SDoWhile SInst
+    (9) SInst -> . SFor SInst
+    (10) SInst -> . SRet SInst
+    (11) SInst -> . SArr SInst
+    (12) SInst -> . SBreak SInst
+    (13) SInst -> . empty
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -4944,7 +4944,7 @@ state 258
     (85) SArr -> . IDENTIFICADOR CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER ASIGNAR SOpe PUNTO_COMA
     (86) SArr -> . STipos IDENTIFICADOR CORCHETE_IZQ AArr
     (118) SBreak -> . ROMPER PUNTO_COMA
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -4960,7 +4960,7 @@ state 258
     BUCLE_PARA      shift and go to state 31
     RETORNAR        shift and go to state 32
     ROMPER          shift and go to state 33
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10
@@ -5029,15 +5029,15 @@ state 260
 state 261
 
     (110) SFor -> BUCLE_PARA PAREN_IZQ SDecVarFor PUNTO_COMA SOpe PUNTO_COMA SAsigVarFor PAREN_DER LLAVE_IZQ . SInst LLAVE_DER
-    (4) SInst -> . SVar SInst
-    (5) SInst -> . SIfElse SInst
-    (6) SInst -> . SWhile SInst
-    (7) SInst -> . SDoWhile SInst
-    (8) SInst -> . SFor SInst
-    (9) SInst -> . SRet SInst
-    (10) SInst -> . SArr SInst
-    (11) SInst -> . SBreak SInst
-    (12) SInst -> . empty
+    (5) SInst -> . SVar SInst
+    (6) SInst -> . SIfElse SInst
+    (7) SInst -> . SWhile SInst
+    (8) SInst -> . SDoWhile SInst
+    (9) SInst -> . SFor SInst
+    (10) SInst -> . SRet SInst
+    (11) SInst -> . SArr SInst
+    (12) SInst -> . SBreak SInst
+    (13) SInst -> . empty
     (38) SVar -> . STipos IDENTIFICADOR FVar
     (39) SVar -> . IDENTIFICADOR DVar
     (76) SIfElse -> . CONDICIONAL PAREN_IZQ SOpe PAREN_DER LLAVE_IZQ AIfElse
@@ -5048,7 +5048,7 @@ state 261
     (85) SArr -> . IDENTIFICADOR CORCHETE_IZQ NUMERO_ENTERO CORCHETE_DER ASIGNAR SOpe PUNTO_COMA
     (86) SArr -> . STipos IDENTIFICADOR CORCHETE_IZQ AArr
     (118) SBreak -> . ROMPER PUNTO_COMA
-    (13) empty -> .
+    (4) empty -> .
     (63) STipos -> . TIPO_ENTERO
     (64) STipos -> . TIPO_CADENA
     (65) STipos -> . TIPO_LARGO
@@ -5064,7 +5064,7 @@ state 261
     BUCLE_PARA      shift and go to state 31
     RETORNAR        shift and go to state 32
     ROMPER          shift and go to state 33
-    LLAVE_DER       reduce using rule 13 (empty -> .)
+    LLAVE_DER       reduce using rule 4 (empty -> .)
     TIPO_ENTERO     shift and go to state 8
     TIPO_CADENA     shift and go to state 9
     TIPO_LARGO      shift and go to state 10

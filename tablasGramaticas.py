@@ -1,6 +1,4 @@
 from re import A
-from tablasGramaticaCopia import ZAritm
-
 
 empty = ['vacia']
 
