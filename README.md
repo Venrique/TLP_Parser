@@ -28,28 +28,14 @@ Una vez tenga el proyecto en el directorio deseado y python instalado, se pueden
 
 
 
-<<<<<<< HEAD
 Para correr el analizador sintáctico basado en Yacc se debe ejecutar el comando:
-=======
-Para correr el analizador sintáctico utilizando la librería de yacc:
->>>>>>> 33923b30d0eac90adb067a1f7cb3cc55538cf56f
 
 ```Console
 > python parser_yacc.py
 ```
 
-<<<<<<< HEAD
 Lo que solicitará que se ingrese el nombre del archivo que contiene el código fuente de C a utilizar en el proceso. Considerar que solo es necesario introducir el nombre sin la extensión y el archivo deberá estar contenido en la carpeta "source".
 La solicitud del parser será la siguiente:
-=======
-Este comando pedirá al usuario que ingrese el nombre del archivo a analizar:
-
-```Console
-
-Ingrese solo el nombre del archivo .c que desea parsear
-
-(debe estar contenido en la carpeta 'Source'):
->>>>>>> 33923b30d0eac90adb067a1f7cb3cc55538cf56f
 
 ```Console
 > Ingrese solo el nombre del archivo .c que desea analizar
@@ -59,10 +45,6 @@ Ingrese solo el nombre del archivo .c que desea parsear
  Y una vez ingresado el archivo, el programa se encargará de analizar el archivo de ejemplo, con lo que el output esperado es el siguiente:
 
 ```Console
-<<<<<<< HEAD
-=======
-
->>>>>>> 33923b30d0eac90adb067a1f7cb3cc55538cf56f
 Iniciando análisis sintáctico
 ----------------------------------------------------------
 ERRORES:
@@ -81,22 +63,12 @@ Se generará un arbol sintáctico en la carpeta "resultados" utilizando el nombr
 Para correr el analizador sintáctico diseñado por el equipo se debe ejecutar el comando:
 
 ```Console
-<<<<<<< HEAD
-=======
-
->>>>>>> 33923b30d0eac90adb067a1f7cb3cc55538cf56f
 > python parser.py
 ```
 
 
 
-<<<<<<< HEAD
 El output esperado para dicho analizador sintáctico es similar al siguiente:
-=======
-El output esperado para dicho analizador sintáctico es el siguiente:
-
-```Console
->>>>>>> 33923b30d0eac90adb067a1f7cb3cc55538cf56f
 
 ```Console
 TOKEN:  BUCLE_MIENTRAS
