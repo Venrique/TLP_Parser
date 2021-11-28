@@ -163,6 +163,7 @@ t_LLAVE_DER = r'}'
 
 #cadenas
 t_CADENA = r'"(.*?)"'
+t_CARACTER = r'\'[a-zA-Z]\''
     
 def t_NUMERO_DECIMAL( t ) :
   r'\d+\.\d+'
@@ -207,25 +208,3 @@ def t_error(t):
 
 #Test
 lexer = lex.lex()
-'''
-f = open('./source/ExampleC.c','r')
-test = open('./source/text.txt','w')
-print(file=test)
-test.close()
-test = open('./source/text.txt','a')
-lexer.input(f.read())
-f.close()
-linea = 1
-text = ''
-while True:
-  tok = lexer.token()
-  if not tok: 
-      break
-  lineaN = tok.lineno;
-  if lineaN != linea:
-    print(text, file = test)
-    text = ''
-  text = text + '['+str(tok.type)+', '+str(tok.value)+ '] '
-  linea = lineaN
-test.close()
-'''

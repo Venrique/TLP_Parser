@@ -1,7 +1,8 @@
 struct Libro {
     int codigo;
     char letra;
-};
+    int cosas[5];
+} libroA;
 
 int main(){
     int variable, varOpe = 2+6-5<10, otro=variable=funcion(varOpe);
@@ -9,7 +10,7 @@ int main(){
         //Do stuff
     }
     if (2<5){
-        int cosa = 5;
+        int cosa = libroA.cosas[1];
     }else{
         if(2+cosa>10 && variable){
            while (1)

@@ -46,11 +46,20 @@ def p_ope_D(p):
     | empty
     '''
 
-def p_ope_C(p):
+def p_ope_C(p): 
     '''COpe : PAREN_IZQ SOpe PAREN_DER
-    | IDENTIFICADOR DOpe
+    | EOpe
     | NUMERO_DECIMAL
     | NUMERO_ENTERO
+    '''
+
+def p_ope_E(p): 
+    'EOpe : IDENTIFICADOR FOpe'
+
+def p_ope_F(p): 
+    '''FOpe : DOpe
+    | IDENTIFICADOR FOpe
+    | PUNTO FOpe
     '''
 
 def p_var_S(p):
@@ -66,6 +75,7 @@ def p_var_A(p):
 
 def p_var_B(p):
     '''BVar : SOpe CVar
+    | CARACTER CVar
     | IDENTIFICADOR SFunc AVar
     '''
 
@@ -81,6 +91,7 @@ def p_var_D(p):
 
 def p_var_E(p):
     '''EVar : SOpe PUNTO_COMA
+    | CARACTER PUNTO_COMA
     | IDENTIFICADOR SFunc DVar
     '''
 
