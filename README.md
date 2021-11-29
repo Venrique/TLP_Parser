@@ -149,10 +149,7 @@ Este proyecto consta de 2 analizadores sintácticos:
 El analizador sintáctico creado por el equipo tiene la capacidad de:
 * Analizar los condicionales.
 * Analizar las condiciones (operaciones) dentro de los condicionales.
-* Analizar los bucles: 
-  * For
-  * While
-  * Do-While
+* Analizar los bucles While
 
 ## Tokens disponibles
 Dentro del Tokenizador utilizado se ha contemplado una gran variedad de tokens, sin embargo no todos se llegaron a utilizar para el parser. Aquellos tokens sin utilizar en el parser están señalados con un "*".
